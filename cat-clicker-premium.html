@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Cat Clicker</title>
+<style>
+.center {
+	text-align: center;
+}
+img {
+	width: 350px;
+}
+.floatLeft {
+	float: left;
+}
+</style>
+</head>
+
+<body>
+
+<script>
+
+var cats = [];
+cats[0] = "enhanced-buz.jpg";
+cats[1] = "sneaky.jpg";
+cats[2] = "hider.jpg";
+cats[3] = "british-shortie.jpg";
+cats[4] = "siamese.jpg";
+
+
+// Let's loop over the numbers in our array
+for (var i = 0; i < cats.length; i++) {
+
+    // This is the number we're on...
+    var cat = cats[i];
+
+    // We're creating a DOM element for the number
+    var elem = document.createElement('div');
+	cat = cat.slice(0, -4);
+    elem.textContent = cat;
+
+	
+	//var counter = 0;
+    // ... and when we click, alert the value of `cat`
+    elem.addEventListener('click', (function(catCopy) {
+		var counter = 0;
+        return function() {
+			counter += 1;
+    		document.getElementById("demo").innerHTML = '<img src="img/' + catCopy + '.jpg"><p>' + catCopy + "<br>" + counter + '</p>'; 
+        };
+    })(cat));
+	
+	/*var pic = document.getElementById("demo");
+	alert(pic);
+	pic.addEventListener('click', (function(picCopy) {
+		return function() {
+			counter += 1;
+		};
+	})(pic));*/
+
+    document.body.appendChild(elem);
+	
+};
+
+
+</script>
+
+<div id="demo"></div>
+<script>
+	document.getElementById("demo").addEventListener("click", function(e) {
+    	console.log("clicked:", e.target);
+		counter += 1;
+	});
+</script>
+</body>
+</html>
